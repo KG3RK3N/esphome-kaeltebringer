@@ -6,7 +6,7 @@
 
 ESPHome component for Kältebringer Climates
 
-# Configuration
+## Configuration
 ```yaml
 uart:
   id: uart_bus
@@ -24,8 +24,8 @@ climate:
     name: "A/C"
 ```
 
-# Tested devices
+## Tested devices
 - Kältebringer KB34-12000BTU (flashed on original wifi module, esp_air_DIM_tcl_8M_QIO_TLS_1.3.3)
 
-# Thanks
+## Thanks
 Based on the custom component from [lNikazzzl](https://github.com/lNikazzzl/tcl_ac_esphome/tree/master)
