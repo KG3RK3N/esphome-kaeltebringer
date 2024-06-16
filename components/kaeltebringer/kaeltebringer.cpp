@@ -101,7 +101,7 @@ namespace kaeltebringer {
   void KaeltebringerClimate::control(const climate::ClimateCall &call) {
     if (call.get_mode().has_value()) {
       // User requested mode change
-      ClimateMode climate_mode = *call.get_mode();
+      climate::ClimateMode climate_mode = *call.get_mode();
       // Send mode to hardware
 
       get_cmd_resp_t get_cmd_resp = {0};
