@@ -1,0 +1,31 @@
+esphome:
+  name: kaeltebringer
+  friendly_name: Kältebringer
+
+esp8266:
+  board: esp_wroom_02
+
+external_components:
+  - source:
+      url: https://github.com/KG3RK3N/esphome-kaeltebringer
+      type: git
+    components: [kaeltebringer]
+
+# Enable logging
+logger:
+  # baud_rate: 0 # disable logging on uart
+
+status_led:
+    pin: GPIO5
+
+uart:
+  id: uart_bus
+  tx_pin: 15
+  rx_pin: 13
+  baud_rate: 9600
+  parity: EVEN
+
+climate:
+  - platform: kaeltebringer
+    uart_id: uart_bus
+    name: "A/C"
