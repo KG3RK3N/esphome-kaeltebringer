@@ -1,5 +1,9 @@
 # esphome-kaeltebringer
 
+![GitHub stars](https://img.shields.io/github/stars/KG3RK3N/esphome-kaeltebringer)
+![GitHub forks](https://img.shields.io/github/forks/KG3RK3N/esphome-kaeltebringer)
+![GitHub watchers](https://img.shields.io/github/watchers/KG3RK3N/esphome-kaeltebringer)
+
 ESPHome component for Kältebringer Climates
 
 # Configuration
