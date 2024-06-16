@@ -1,11 +1,11 @@
 #include "kaeltebringer.h"
-  
+
 namespace esphome {
 namespace kaeltebringer {
 
   static const char *const TAG = "kaeltebringer";
 
-  void KaeltebringerClimate::setup() override {
+  void KaeltebringerClimate::setup() {
     // This will be called by App.setup()
   }
 
@@ -98,7 +98,7 @@ namespace kaeltebringer {
     return -1;
   }
 
-  void KaeltebringerClimate::control(const ClimateCall &call) override {
+  void KaeltebringerClimate::control(const climate::ClimateCall &call) {
     if (call.get_mode().has_value()) {
       // User requested mode change
       ClimateMode climate_mode = *call.get_mode();
@@ -232,7 +232,7 @@ namespace kaeltebringer {
     ESP_LOGD(TAG, "%s", str);
   }
 
-  void KaeltebringerClimate::update() override {
+  void KaeltebringerClimate::update() {
     // This will be called every "update_interval" milliseconds.
     uint8_t req_cmd[] = {0xBB, 0x00, 0x01, 0x04, 0x02, 0x01, 0x00, 0xBD};
 
@@ -243,7 +243,7 @@ namespace kaeltebringer {
     else write_array(req_cmd, sizeof(req_cmd));
   }
 
-  void KaeltebringerClimate::loop() override {
+  void KaeltebringerClimate::loop() {
     const int max_line_length = 100;
     static uint8_t buffer[max_line_length];
     
