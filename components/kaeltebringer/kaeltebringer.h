@@ -8,12 +8,8 @@
 namespace esphome {
 namespace kaeltebringer {
 
-class KaeltebringerClimate : public PollingComponent, public Climate, public UARTDevice {
+class KaeltebringerClimate : public PollingComponent, public climate::Climate, public uart::UARTDevice {
  public:
-
-  KaeltebringerClimate(UARTComponent *parent) : UARTDevice(parent) {}
-  KaeltebringerClimate() : PollingComponent() {}
-
   union get_cmd_resp_t{
     struct {
       uint8_t header;
@@ -177,7 +173,7 @@ class KaeltebringerClimate : public PollingComponent, public Climate, public UAR
   get_cmd_resp_t m_get_cmd_resp = {0};
   set_cmd_t m_set_cmd = {0};
   
-  ClimateTraits traits() override {
+  climate::ClimateTraits traits() override {
     // The capabilities of the climate device
     auto traits = climate::ClimateTraits();
     traits.set_supports_current_temperature(true);
@@ -191,7 +187,6 @@ class KaeltebringerClimate : public PollingComponent, public Climate, public UAR
   }
 
   void setup() override;
-  void control(const ClimateCall &call) override;
   void update() override;
   void loop() override;
 
@@ -200,6 +195,8 @@ protected:
   int read_data_line(int readch, uint8_t *buffer, int len);
   bool is_valid_xor(uint8_t *buffer, int len);
   void print_hex_str(uint8_t *buffer, int len);
+  void control(const climate::ClimateCall &call) override;
+
 
 };
 
