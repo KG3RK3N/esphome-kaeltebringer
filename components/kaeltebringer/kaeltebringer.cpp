@@ -70,7 +70,7 @@ namespace kaeltebringer {
     for (int i = 0; i < sizeof(m_set_cmd.raw) - 1; i++) m_set_cmd.raw[sizeof(m_set_cmd.raw) - 1] ^= m_set_cmd.raw[i];
   }
   
-    int read_data_line(int readch, uint8_t *buffer, int len)
+  int KaeltebringerClimate::read_data_line(int readch, uint8_t *buffer, int len)
   {
     static int pos = 0;
     static bool wait_len = false;
