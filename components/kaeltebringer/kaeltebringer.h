@@ -189,14 +189,13 @@ class KaeltebringerClimate : public PollingComponent, public climate::Climate, p
   void setup() override;
   void update() override;
   void loop() override;
-
-protected:
   void build_set_cmd(get_cmd_resp_t * get_cmd_resp);
   int read_data_line(int readch, uint8_t *buffer, int len);
   bool is_valid_xor(uint8_t *buffer, int len);
   void print_hex_str(uint8_t *buffer, int len);
-  void control(const climate::ClimateCall &call) override;
 
+protected:
+  void control(const climate::ClimateCall &call) override;
 
 };
 
