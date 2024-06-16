@@ -14,7 +14,7 @@ KaeltebringerClimate = kaeltebringer_ns.class_(
     "KaeltebringerClimate", cg.PollingComponent, climate.Climate, uart.UARTDevice
 )
 
-CONFIG_SCHEMA = (
+CONFIG_SCHEMA = cv.All(
     climate.CLIMATE_SCHEMA.extend(
         {
             cv.GenerateID(): cv.declare_id(KaeltebringerClimate),
@@ -22,10 +22,6 @@ CONFIG_SCHEMA = (
     )
     .extend(uart.UART_DEVICE_SCHEMA)
     .extend(cv.polling_component_schema("60s"))
-)
-
-FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema(
-    "kaeltebringer", require_rx=True, require_tx=True
 )
 
 async def to_code(config):
