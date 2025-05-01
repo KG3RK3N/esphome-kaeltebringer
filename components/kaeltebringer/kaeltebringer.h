@@ -193,12 +193,18 @@ class KaeltebringerClimate : public PollingComponent, public climate::Climate, p
 
 protected:
   bool beep_enabled_{true};
+  bool is_changed{false};
   void control(const climate::ClimateCall &call) override;
   void build_set_cmd(get_cmd_resp_t * get_cmd_resp);
   int read_data_line(int readch, uint8_t *buffer, int len);
   bool is_valid_xor(uint8_t *buffer, int len);
   void print_hex_str(uint8_t *buffer, int len);
-
+  void set_current_temperature(float current_temperature);
+  void set_custom_fan_mode(const std::string &fan_mode);
+  void set_mode(esphome::climate::ClimateMode mode);
+  void set_swing_mode(esphome::climate::ClimateSwingMode swing_mode);
+  void set_target_temperature(float target_temperature);
+  
 };
 
 }
