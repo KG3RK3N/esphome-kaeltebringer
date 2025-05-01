@@ -183,7 +183,7 @@ namespace kaeltebringer {
     }
     if (call.get_swing_mode().has_value()) {
       // User requested target temperature change
-      ClimateSwingMode swing_mode = *call.get_swing_mode();
+      esphome::climate::ClimateSwingMode swing_mode = *call.get_swing_mode();
 
       get_cmd_resp_t get_cmd_resp = {0};
       memcpy(get_cmd_resp.raw, m_get_cmd_resp.raw, sizeof(get_cmd_resp.raw));
