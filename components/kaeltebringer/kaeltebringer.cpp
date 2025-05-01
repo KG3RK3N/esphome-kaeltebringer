@@ -181,7 +181,7 @@ namespace kaeltebringer {
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
     }
-    /*if (call.get_swing_mode().has_value()) {
+    if (call.get_swing_mode().has_value()) {
       // User requested target temperature change
       ClimateSwingMode swing_mode = *call.get_swing_mode();
 
@@ -209,8 +209,7 @@ namespace kaeltebringer {
 
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
-     
-    }*/
+    }
     if (call.get_custom_fan_mode().has_value()) {
       // User requested target temperature change
       std::string fan_mode = *call.get_custom_fan_mode();
@@ -235,7 +234,6 @@ namespace kaeltebringer {
 
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
-     
     }
   }
 
@@ -318,16 +316,8 @@ namespace kaeltebringer {
           if (this->is_changed)
              this->publish_state();
         }
-        //publish_state(buffer);
       }
     }
-    
-    //this->target_temperature = 20.0;
-    //this->publish_state();
-      // if(readline(read(), buffer, max_line_length) > 0) {
-      //   publish_state(buffer);
-      // }
-   // }
   }
 
 }
