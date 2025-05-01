@@ -9,13 +9,15 @@ namespace kaeltebringer {
     // This will be called by App.setup()
   }
 
+  void KaeltebringerClimate::set_beep_enabled(bool enabled) { this->beep_enabled_ = enabled; }
+
   void KaeltebringerClimate::build_set_cmd(get_cmd_resp_t * get_cmd_resp) {
     memcpy(m_set_cmd.raw, set_cmd_base, sizeof(m_set_cmd.raw));
 
     m_set_cmd.data.power = get_cmd_resp->data.power;
     m_set_cmd.data.off_timer_en = 0;
     m_set_cmd.data.on_timer_en = 0;
-    m_set_cmd.data.beep = 1;
+    m_set_cmd.data.beep = int(this->beep_enabled_);
     m_set_cmd.data.disp = 1;
     m_set_cmd.data.eco = 0;
 

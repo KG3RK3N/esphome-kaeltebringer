@@ -189,8 +189,10 @@ class KaeltebringerClimate : public PollingComponent, public climate::Climate, p
   void setup() override;
   void update() override;
   void loop() override;
+  void set_beep_enabled(bool enabled);
 
 protected:
+  bool beep_enabled_{true};
   void control(const climate::ClimateCall &call) override;
   void build_set_cmd(get_cmd_resp_t * get_cmd_resp);
   int read_data_line(int readch, uint8_t *buffer, int len);

@@ -8,6 +8,7 @@ from esphome.const import CONF_ID
 
 DEPENDENCIES = ["uart", "climate"]
 CODEOWNERS = ["@KG3RK3N"]
+CONF_BEEP_ENABLED = "beep_enabled"
 
 kaeltebringer_ns = cg.esphome_ns.namespace("kaeltebringer")
 KaeltebringerClimate = kaeltebringer_ns.class_(
@@ -18,6 +19,7 @@ CONFIG_SCHEMA = (
     climate.CLIMATE_SCHEMA.extend(
         {
             cv.GenerateID(): cv.declare_id(KaeltebringerClimate),
+            cv.Optional(CONF_BEEP_ENABLED, default=True): cv.boolean
         }
     )
     .extend(uart.UART_DEVICE_SCHEMA)
@@ -29,3 +31,4 @@ async def to_code(config):
     await cg.register_component(var, config)
     await uart.register_uart_device(var, config)
     await climate.register_climate(var, config)
+    cg.add(var.set_beep_enabled(config[CONF_BEEP_ENABLED]))
