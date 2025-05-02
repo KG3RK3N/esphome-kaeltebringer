@@ -13,32 +13,32 @@ namespace kaeltebringer {
 
   void KaeltebringerClimate::set_current_temperature(float current_temperature) {
     if (this->current_temperature == current_temperature) return;
-    this->is_changed = true;
     this->current_temperature = current_temperature;
+    this->is_changed = true;
   }
 
   void KaeltebringerClimate::set_custom_fan_mode(const std::string &fan_mode) {
     if (this->custom_fan_mode == fan_mode) return;
-    this->is_changed = true;
     this->custom_fan_mode = fan_mode;
+    this->is_changed = true;
   }
 
   void KaeltebringerClimate::set_mode(esphome::climate::ClimateMode mode) {
     if (this->mode == mode) return;
-    this->is_changed = true;
     this->mode = mode;
+    this->is_changed = true;
   }
 
   void KaeltebringerClimate::set_swing_mode(esphome::climate::ClimateSwingMode swing_mode) {
     if (this->swing_mode == swing_mode) return;
-    this->is_changed = true;
     this->swing_mode = swing_mode;
+    this->is_changed = true;
   }
 
   void KaeltebringerClimate::set_target_temperature(float target_temperature) {
     if (this->target_temperature == target_temperature) return;
-    this->is_changed = true;
     this->target_temperature = target_temperature;
+    this->is_changed = true;
   }
 
   void KaeltebringerClimate::build_set_cmd(get_cmd_resp_t * get_cmd_resp) {
@@ -235,6 +235,7 @@ namespace kaeltebringer {
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
     }
+    update();
   }
 
   bool KaeltebringerClimate::is_valid_xor(uint8_t *buffer, int len)
