@@ -29,3 +29,4 @@ climate:
   - platform: kaeltebringer
     uart_id: uart_bus
     name: "A/C"
+    # beep_enabled: false
