@@ -219,18 +219,18 @@ namespace kaeltebringer {
 
       get_cmd_resp.data.turbo = 0x00;
       get_cmd_resp.data.mute = 0x00;
-      if (fan_mode == esphome::to_string("Turbo")) { 
+      if (fan_mode == std::string("Turbo")) { 
         get_cmd_resp.data.fan = 0x03;
         get_cmd_resp.data.turbo = 0x01;
-      } else if (fan_mode == esphome::to_string("Mute")) {
+      } else if (fan_mode == std::string("Mute")) {
         get_cmd_resp.data.fan = 0x01;
         get_cmd_resp.data.mute = 0x01;
-      } else if (fan_mode == esphome::to_string("Automatic")) get_cmd_resp.data.fan = 0x00;
-      else if (fan_mode == esphome::to_string("1")) get_cmd_resp.data.fan = 0x01;
-      else if (fan_mode == esphome::to_string("2")) get_cmd_resp.data.fan = 0x04;
-      else if (fan_mode == esphome::to_string("3")) get_cmd_resp.data.fan = 0x02;
-      else if (fan_mode == esphome::to_string("4")) get_cmd_resp.data.fan = 0x05;
-      else if (fan_mode == esphome::to_string("5")) get_cmd_resp.data.fan = 0x03;
+      } else if (fan_mode == std::string("Automatic")) get_cmd_resp.data.fan = 0x00;
+      else if (fan_mode == std::string("1")) get_cmd_resp.data.fan = 0x01;
+      else if (fan_mode == std::string("2")) get_cmd_resp.data.fan = 0x04;
+      else if (fan_mode == std::string("3")) get_cmd_resp.data.fan = 0x02;
+      else if (fan_mode == std::string("4")) get_cmd_resp.data.fan = 0x05;
+      else if (fan_mode == std::string("5")) get_cmd_resp.data.fan = 0x03;
 
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
@@ -294,14 +294,14 @@ namespace kaeltebringer {
           else if (m_get_cmd_resp.data.mode == 0x05) this->set_mode(climate::CLIMATE_MODE_AUTO);
 
 
-          if (m_get_cmd_resp.data.turbo) this->set_custom_fan_mode(esphome::to_string("Turbo"));
-          else if (m_get_cmd_resp.data.mute) this->set_custom_fan_mode(esphome::to_string("Mute"));
-          else if (m_get_cmd_resp.data.fan == 0x00) this->set_custom_fan_mode(esphome::to_string("Automatic"));
-          else if (m_get_cmd_resp.data.fan == 0x01) this->set_custom_fan_mode(esphome::to_string("1"));
-          else if (m_get_cmd_resp.data.fan == 0x04) this->set_custom_fan_mode(esphome::to_string("2"));
-          else if (m_get_cmd_resp.data.fan == 0x02) this->set_custom_fan_mode(esphome::to_string("3"));
-          else if (m_get_cmd_resp.data.fan == 0x05) this->set_custom_fan_mode(esphome::to_string("4"));
-          else if (m_get_cmd_resp.data.fan == 0x03) this->set_custom_fan_mode(esphome::to_string("5"));
+          if (m_get_cmd_resp.data.turbo) this->set_custom_fan_mode(std::string("Turbo"));
+          else if (m_get_cmd_resp.data.mute) this->set_custom_fan_mode(std::string("Mute"));
+          else if (m_get_cmd_resp.data.fan == 0x00) this->set_custom_fan_mode(std::string("Automatic"));
+          else if (m_get_cmd_resp.data.fan == 0x01) this->set_custom_fan_mode(std::string("1"));
+          else if (m_get_cmd_resp.data.fan == 0x04) this->set_custom_fan_mode(std::string("2"));
+          else if (m_get_cmd_resp.data.fan == 0x02) this->set_custom_fan_mode(std::string("3"));
+          else if (m_get_cmd_resp.data.fan == 0x05) this->set_custom_fan_mode(std::string("4"));
+          else if (m_get_cmd_resp.data.fan == 0x03) this->set_custom_fan_mode(std::string("5"));
 
 
           if (m_get_cmd_resp.data.hswing && m_get_cmd_resp.data.vswing) this->set_swing_mode(climate::CLIMATE_SWING_BOTH);
