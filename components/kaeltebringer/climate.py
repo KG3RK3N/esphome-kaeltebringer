@@ -16,9 +16,9 @@ KaeltebringerClimate = kaeltebringer_ns.class_(
 )
 
 CONFIG_SCHEMA = (
-    climate.CLIMATE_SCHEMA.extend(
+    climate.climate_schema(KaeltebringerClimate)
+    .extend(
         {
-            cv.GenerateID(): cv.declare_id(KaeltebringerClimate),
             cv.Optional(CONF_BEEP_ENABLED, default=True): cv.boolean
         }
     )
