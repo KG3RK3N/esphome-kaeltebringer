@@ -18,8 +18,10 @@ namespace kaeltebringer {
   }
 
   void KaeltebringerClimate::set_custom_fan_mode(const std::string &fan_mode) {
-    if (this->custom_fan_mode == fan_mode) return;
-    this->custom_fan_mode = fan_mode;
+    if (this->get_custom_fan_mode() != nullptr && fan_mode == this->get_custom_fan_mode()) 
+      return;
+
+    this->set_custom_fan_mode_(fan_mode.c_str());
     this->is_changed = true;
   }
 
@@ -210,9 +212,11 @@ namespace kaeltebringer {
       build_set_cmd(&get_cmd_resp);
       ready_to_send_set_cmd_flag = true;
     }
-    if (call.get_custom_fan_mode().has_value()) {
+
+    const char* custom_fan_mode = call.get_custom_fan_mode();
+    if (custom_fan_mode != nullptr) {
       // User requested target temperature change
-      std::string fan_mode = *call.get_custom_fan_mode();
+      std::string fan_mode(custom_fan_mode);
 
       get_cmd_resp_t get_cmd_resp = {0};
       memcpy(get_cmd_resp.raw, m_get_cmd_resp.raw, sizeof(get_cmd_resp.raw));
